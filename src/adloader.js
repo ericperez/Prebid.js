@@ -31,12 +31,8 @@ exports.loadScript = function (tagSrc, callback) {
   jptScript.src = tagSrc;
 
   //add the new script tag to the page
-  var elToAppend = document.getElementsByTagName('head');
-  elToAppend = elToAppend.length ? elToAppend : document.getElementsByTagName('body');
-  if (elToAppend.length) {
-    elToAppend = elToAppend[0];
-    elToAppend.insertBefore(jptScript, elToAppend.firstChild);
-  }
+	var topElement = document.head || document.body;
+	topElement.insertBefore(jptScript, topElement.firstChild);
 };
 
 //track a impbus tracking pixel
